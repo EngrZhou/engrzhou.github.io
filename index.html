@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="EngrZhou&#39;s Blog">
+<meta property="og:url" content="https://engrzhou.github.io/index.html">
+<meta property="og:site_name" content="EngrZhou&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EngrZhou&#39;s Blog">
+
+
+
+
+
+
+  <link rel="canonical" href="https://engrzhou.github.io/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>EngrZhou's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">EngrZhou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/Linux加域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/Linux加域/" itemprop="url">
+                  Ubuntu加域
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-08 17:58:23 / 修改时间：18:05:44" itemprop="dateCreated datePublished" datetime="2018-06-08T17:58:23+08:00">2018-06-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>工具：<a href="https://github.com/BeyondTrust/pbis-open" target="_blank" rel="noopener">https://github.com/BeyondTrust/pbis-open</a><br>命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /opt/pbis/bin/domainjoin-cli join --disable ssh service.domain.com user</span><br></pre></td></tr></table></figure></p>
+<p>如果支持802.1X认证则按以下操作</p>
+<p><strong>打开网络–&gt;安全–&gt;802.1X安全性</strong>，根据网络环境进行登录配置。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2016/01/Shasowsocks-Ubuntu内核优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/Shasowsocks-Ubuntu内核优化/" itemprop="url">
+                  Shasowsocks Ubuntu内核优化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-01-07 17:49:12 / 修改时间：19:59:44" itemprop="dateCreated datePublished" datetime="2016-01-07T17:49:12+08:00">2016-01-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一步，增加系统文件描述符的最大限数</p>
+<p>编辑文件<code>limits.conf</code></p>
+<pre><code>vi /etc/security/limits.conf
+</code></pre><p>增加以下两行</p>
+<pre><code>* soft nofile 51200
+* hard nofile 51200
+</code></pre><p>启动shadowsocks服务器之前，设置以下参数</p>
+<pre><code>ulimit n 51200
+</code></pre><p><em>加入开机启动</em></p>
+<p>第二步，调整内核参数<br>修改配置文件 <code>/etc/sysctl.conf</code></p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">fs.file-max = 51200</span><br><span class="line"><span class="comment">#提高整个系统的文件限制</span></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line"><span class="comment">#表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；</span></span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line"><span class="comment">#表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；</span></span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line"><span class="comment">#表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭；</span></span><br><span class="line"><span class="comment">#为了对NAT设备更友好，建议设置为0。</span></span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line"><span class="comment">#修改系統默认的 TIMEOUT 时间。</span></span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line"><span class="comment">#表示当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为20分钟。</span></span><br><span class="line"><span class="comment">#表示用于向外连接的端口范围。缺省情况下很小：32768到61000，改为10000到65000。</span></span><br><span class="line"><span class="comment">#（注意：这里不要将最低值设的太低，否则可能会占用掉正常的端口！）</span></span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000 </span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line"><span class="comment">#表示SYN队列的长度，默认为1024，加大队列长度为8192，可以容纳更多等待连接的网络连接数。</span></span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line"><span class="comment">#表示系统同时保持TIME_WAIT的最大数量，如果超过这个数字，TIME_WAIT将立刻被清除并打印警告信息。</span></span><br><span class="line"><span class="comment">#额外的，对于内核版本新于**3.7.1**的，我们可以开启tcp_fastopen：</span></span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line"></span><br><span class="line"><span class="comment"># increase TCP max buffer size settable using setsockopt()</span></span><br><span class="line">net.core.rmem_max = 67108864 </span><br><span class="line">net.core.wmem_max = 67108864 </span><br><span class="line"><span class="comment"># increase Linux autotuning TCP buffer limit</span></span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line"><span class="comment"># increase the length of the processor input queue</span></span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line"><span class="comment"># recommended for hosts with jumbo frames enabled</span></span><br><span class="line">net.ipv4.tcp_mtu_probing=1</span><br></pre></td></tr></table></figure>
+</code></pre><p>修改后执行 <code>sysctl -p</code> 使配置生效</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/04/tcp-hybla-编译以及加载/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/tcp-hybla-编译以及加载/" itemprop="url">
+                  tcp_hybla 编译以及加载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-04-14 17:36:42" itemprop="dateCreated datePublished" datetime="2015-04-14T17:36:42+08:00">2015-04-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-01-07 19:51:24" itemprop="dateModified" datetime="2016-01-07T19:51:24+08:00">2016-01-07</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>源地址：<br><a href="https://www.v2ex.com/t/114788" target="_blank" rel="noopener">https://www.v2ex.com/t/114788</a><br><a href="http://www.fslk.net/?p=822" target="_blank" rel="noopener">http://www.fslk.net/?p=822</a></p>
+<p><strong>经测试ubuntu 14.10 3.19.1-x86_64-linode53确实有效</strong><br>以下为原文，有两处是在实践过程中根据实际情况进行了修改，已经做了标注。</p>
+<p>国情原因，中美线路有时掉包率会很高，导致网站访问速度慢，Linux 机器缺省的TCP协议发包算法是cubic，如果改为hybla，在掉包率高时可以大幅提高访问速度；如果cubic只能流畅观看480p的视频，改为hybla则可以流畅观看720p的视频，效果提升是明显的，但很多朋友不会编译内核模块，写个小白教程供大家参考，照以下几步操作一遍，你会发现编译内核模块原来相当简单。</p>
+<p>以下教程每行#后面的为需要输入的命令，操作时需要root权限，需要你会使用vi，我的系统是Ubuntu 12.04.2 LTS，其他Linux系统命令不会差别很大，请按自己的情况修改内核名称。</p>
+<ol>
+<li><p>查看你的机器内核版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">3.11.6-x86_64-linode35</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去 <a href="https://www.kernel.org/pub/linux/kernel/v3.0/" target="_blank" rel="noopener">https://www.kernel.org/pub/linux/kernel/v3.0/</a> 下载相同版本的源码到任意目录，解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mkdir /root/mykernel</span></span><br><span class="line"><span class="comment">#cd /root/mykernel</span></span><br><span class="line"><span class="comment">#wget https://www.kernel.org/pub/linux/kernel/v3.0/linux-3.11.6.tar.gz</span></span><br><span class="line"><span class="comment">#tar xzvf linux-3.11.6.tar.gz</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装内核编译工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#apt-get update &amp;&amp; apt-get install -y build-essential libncurses5-dev</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制Linode原来的内核编译配置文件到源码根目录，在<code>CONFIG_TCP_CONG_CUBIC=y</code>下面增加一行 <code>CONFIG_TCP_CONG_HYBLA=y</code>，再生成编译模块需要的内核</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd linux-3.11.6</span></span><br><span class="line"><span class="comment">#zcat /proc/config.gz &gt; .config</span></span><br><span class="line"><span class="comment">#vi .config</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>查找<code>CONFIG_TCP_CONG_CUBIC=y</code>，在下面增加一行 <code>CONFIG_TCP_CONG_HYBLA=y</code>，保存<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#make</span></span><br></pre></td></tr></table></figure></p>
+<ol start="5">
+<li>耐心等待编译内核完成，单核编译大约需15分钟，完成后，进入模块所在的目录，编写Makefile<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd net/ipv4/</span></span><br><span class="line"><span class="comment">#mv Makefile Makefile.old</span></span><br><span class="line"><span class="comment">#vi Makefile</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以下是Makefle的内容，注意要把KDIR修改为你自己的源码路径，其他则照抄就可以了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Makefile for tcp_hybla.ko</span></span><br><span class="line">obj-m := tcp_hybla.o</span><br><span class="line">KDIR := /root/mykernel/linux-3.11.6</span><br><span class="line">PWD := $(shell <span class="built_in">pwd</span>)</span><br><span class="line">default := $(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules</span><br></pre></td></tr></table></figure>
+<p>6.进入源码根目录，编译模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd /root/mykernel/linux-3.11.6/</span></span><br><span class="line"><span class="comment">#make modules</span></span><br></pre></td></tr></table></figure></p>
+<p>7.进入到模块所在目录，复制生成的 tcp_hybla.ko 到加载目录，测试加载模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd /root/mykernel/linux-3.11.6/net/ipv4</span></span><br><span class="line"><span class="comment">#cp tcp_hybla.ko /root/mykernel/</span></span><br><span class="line"><span class="comment">#cd /root/mykernel/</span></span><br></pre></td></tr></table></figure></p>
+<p>加载前<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sysctl net.ipv4.tcp_available_congestion_control</span></span><br><span class="line">net.ipv4.tcp_available_congestion_control = cubic reno</span><br><span class="line"><span class="comment">#insmod tcp_hybla.ko</span></span><br></pre></td></tr></table></figure></p>
+<p>加载后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sysctl net.ipv4.tcp_available_congestion_control</span></span><br><span class="line">net.ipv4.tcp_available_congestion_control = cubic reno hybla</span><br></pre></td></tr></table></figure></p>
+<p>设置hybal为优先<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sysctl net.ipv4.tcp_congestion_control=hybla</span></span><br></pre></td></tr></table></figure></p>
+<p>8.设置开机自动加载模块，把<code>tcp_hybla.ko</code> 复制到 <code>/lib/modules/3.11.6-x86_64-linode35/kernel/net/ipv4</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd /lib/modules/3.11.6-x86_64-linode35</span></span><br><span class="line"><span class="comment">#mkdir -p kernel/net/ipv4</span></span><br><span class="line"><span class="comment">#cd kernel/net/ipv4</span></span><br><span class="line"><span class="comment">#cp /root/mykernel/tcp_hybla.ko ./</span></span><br><span class="line"><span class="comment">#cd /lib/modules/3.11.6-x86_64-linode35</span></span><br><span class="line"><span class="comment">#depmod -a</span></span><br></pre></td></tr></table></figure></p>
+<p>（新）此处如果WARNING可以输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch modules.order</span><br><span class="line">touch modules.builtin</span><br></pre></td></tr></table></figure></p>
+<p>9.修改/etc/sysctl.conf 开机自动设置hybal为优先<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vi /etc/sysctl.conf</span></span><br><span class="line">net.ipv4.tcp_congestion_control = hybla</span><br></pre></td></tr></table></figure></p>
+<p>用这9步就可以了，只是动态加载模块，不用更换内核，不用停机重启，不影响网站正常运营，相当方便，值得尝试，参考这个方法可以为 Linode 动态加载任何需要的内核模块，如fastopen，htcp，highspeed 等，有任何问题请到推上找我交流 @interwebdev ，转载请注明出处( <a href="http://www.fslk.net/?p=822" target="_blank" rel="noopener">http://www.fslk.net/?p=822</a> ) …</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/03/Can-t-use-Subversion-command-line-client-错误解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/03/Can-t-use-Subversion-command-line-client-错误解决办法/" itemprop="url">
+                  Can't use Subversion command line client 错误解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-03-04 14:44:37 / 修改时间：15:13:50" itemprop="dateCreated datePublished" datetime="2015-03-04T14:44:37+08:00">2015-03-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>MAC下使用AndroidStudio出现了以下错误：</p>
+<p><img src="http://ww3.sinaimg.cn/large/63a2fa6fgw1eptp92zotaj20s004kabz.jpg" alt="AndroidStudio错误提示"></p>
+<p>在命令行输入<code>svn --version</code> 时候</p>
+<p>如果回应是</p>
+<pre><code>Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.
+</code></pre><p>则打开Xcode，同意一下协议就可以了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/01/ShadowSocks服务器搭建iptables配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/ShadowSocks服务器搭建iptables配置/" itemprop="url">
+                  ShadowSocks服务器搭建iptables配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-01-26 10:50:49" itemprop="dateCreated datePublished" datetime="2015-01-26T10:50:49+08:00">2015-01-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2015-04-14 17:50:20" itemprop="dateModified" datetime="2015-04-14T17:50:20+08:00">2015-04-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>设定默认规则：</p>
+<pre><code>iptables -P INPUT  DROP
+iptables -P OUPUT ACCEPT
+iptables -P FORWAD ACCEPT
+</code></pre><p>允许SSH：</p>
+<pre><code>iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+</code></pre><p>允许Shadowsocks端口：</p>
+<pre><code>iptables -A INPUT -p tcp --dport 8388 -j ACCEPT
+</code></pre><p>允许合法链接并丢弃非法连接：</p>
+<pre><code>iptables -I INPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -I INPUT -m state --state INVALID -j DROP
+</code></pre><p>保存或恢复iptables规则</p>
+<pre><code>iptables-save &gt; somefile
+iptables-restore &lt; somefiles
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/01/魅族Flyme开启USB调试模式之后，无法在Ubuntu等系统下识别的解决方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/魅族Flyme开启USB调试模式之后，无法在Ubuntu等系统下识别的解决方法/" itemprop="url">
+                  魅族Flyme开启USB调试模式之后，无法在Ubuntu等系统下识别的解决方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-01-06 15:08:29 / 修改时间：15:12:14" itemprop="dateCreated datePublished" datetime="2015-01-06T15:08:29+08:00">2015-01-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Ubuntu环境"><a href="#Ubuntu环境" class="headerlink" title="Ubuntu环境"></a>Ubuntu环境</h2><ol>
+<li>建立或修改文件 <code>~/.android/adb_usb.ini</code>，在文件开头或末尾添加一行，内容是<code>0x2a45</code>。</li>
+<li>建立或修改文件 <code>/etc/udev/rules.d/51-android.rules</code><br>2.1 修改文件权限：<br><code>sudo chmod a+rx /etc/udev/rules.d/51-android.rules</code><br>2.2 在文件中添加一行内容：<br><code>SUBSYSTEM==&quot;usb&quot;, ATTR{idVendor}==&quot;2a45&quot;, MODE=&quot;0666&quot;, GROUP=&quot;plugdev&quot;</code></li>
+<li><p>确保你在用户组”plugdev”<br><code>sudo adduser plugdev</code></p>
+</li>
+<li><p>按下面流程重启udev服务或直接重启PC<br><code>sudo service udev restart</code></p>
+</li>
+<li><p>检查ADB设备是否存在<br><code>adb kill-server</code><br><code>adb devices</code></p>
+</li>
+</ol>
+<h2 id="Windows-XP中文环境"><a href="#Windows-XP中文环境" class="headerlink" title="Windows XP中文环境"></a>Windows XP中文环境</h2><ol>
+<li><p>建立或修改<code>C:\Documents and Settings\&lt;你的用户名&gt;\.android\adb_usb.ini</code>文件，在该文件中添加一行文本，内容是<code>0x2a45</code>。</p>
+</li>
+<li><p>检查ADB设备是否找到（命令行程序中）<br><code>adb kill-server</code><br><code>adb devices</code></p>
+</li>
+</ol>
+<h2 id="Windows-7中文环境"><a href="#Windows-7中文环境" class="headerlink" title="Windows 7中文环境"></a>Windows 7中文环境</h2><ol>
+<li><p>建立或修改<code>C:\用户\&lt;你的用户名&gt;\.android\adb_usb.ini</code>文件，在该文件中添加一行文本，内容是0x2a45。</p>
+</li>
+<li><p>检查ADB设备是否找到（命令行程序中）<br><code>adb kill-server</code><br><code>adb devices</code></p>
+</li>
+</ol>
+<p>参考文档： <a href="http://developer.android.com/tools/device.html" target="_blank" rel="noopener">http://developer.android.com/tools/device.html</a><br>来源：MX4_ADB_参考说明书.txt（内置光盘模式）</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2014/12/BuildAPP-超过65535个方法的解决方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/12/BuildAPP-超过65535个方法的解决方法/" itemprop="url">
+                  BuildAPP 超过65535个方法的解决方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-18 15:29:11 / 修改时间：15:35:38" itemprop="dateCreated datePublished" datetime="2014-12-18T15:29:11+08:00">2014-12-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>自Android5.0发布之后，官方给出了Multidex工具包，该工具包在5.0及以上的系统版本是不需要单独引入的，但是如果使用5.0之前的系统，需要单独引入。<br>引入方法：</p>
+<ul>
+<li><p>修改配置build.gradle</p>
+<pre><code>android {
+    compileSdkVersion 21
+    buildToolsVersion &quot;21.1.1&quot;
+
+    defaultConfig {
+    ...
+        minSdkVersion 14
+        targetSdkVersion 21
+    ...
+
+       // 开启 multidex 
+       multiDexEnabled true
+    }
+    ...
+}
+
+dependencies {
+   compile &apos;com.android.support:multidex:1.0.0&apos;
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>修改<code>AndroidManifest.xml</code>，自定义application为<code>android.support.multidex.MultiDexApplication</code>，如果是已经有自定义application则直接看下一步。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.example.android.multidex.myapplication&quot;&gt;
+    &lt;application
+        ...
+        android:name=&quot;android.support.multidex.MultiDexApplication&quot;&gt;
+        ...
+    &lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre></li>
+<li><p>如果是自定义过application 则继承<code>MultiDexApplication</code>。<br>网上有资料还要加一步骤 <code>MultiDex.install(getTargetContext());</code>其实这一步骤是没必要的，<code>MultiDexApplication</code>已经做了相关操作。</p>
+</li>
+</ul>
+<p>但是根据实际使用<strong>Multidex仅支持4.0及以上系统，2.3会无法安装</strong>。</p>
+<p>如果用户群体中4.0以下的用户比较多的话，目前还是建议精简自己的代码和做混淆压缩优化。</p>
+<p>自<code>com.android.tools.build:gradle:0.14.0</code>开始，runProguard 更名为minifyEnabled，并且支持自动去除没有使用的资源，达到减小APK体积，去除没用资源默认是关闭的，需要通过设置<code>build type</code>中的<code>shrinkResources true</code>打开，此功能需要依赖代码”瘦身“，即保证<code>minifyEnabled true</code>。具体代码</p>
+<pre><code>buildTypes {
+    release {
+        minifyEnabled           true
+        shrinkResources         true
+    }
+}
+</code></pre><p>Multidex说明官方原文：<a href="https://developer.android.com/tools/building/multidex.html" target="_blank" rel="noopener">https://developer.android.com/tools/building/multidex.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2014/11/Ubuntu-server-设置时区并更新时间/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/Ubuntu-server-设置时区并更新时间/" itemprop="url">
+                  Ubuntu server 设置时区并更新时间
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-11-27 13:30:14 / 修改时间：13:44:16" itemprop="dateCreated datePublished" datetime="2014-11-27T13:30:14+08:00">2014-11-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>tzselect
+</code></pre><blockquote>
+<p>Please identify a location so that time zone rules can be set correctly.<br>Please select a continent, ocean, “coord”, or “TZ”.<br> 1) Africa<br> 2) Americas<br> 3) Antarctica<br> 4) Arctic Ocean<br> 5) Asia<br> 6) Atlantic Ocean<br> 7) Australia<br> 8) Europe<br> 9) Indian Ocean<br>10) Pacific Ocean<br>11) coord - I want to use geographical coordinates.<br>12) TZ - I want to specify the time zone using the Posix TZ format.<br><code>#? 5</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Please select a country whose clocks agree with yours.<br> 1) Afghanistan          18) Israel            35) Palestine<br> 2) Armenia          19) Japan            36) Philippines<br> 3) Azerbaijan          20) Jordan            37) Qatar<br> 4) Bahrain          21) Kazakhstan        38) Russia<br> 5) Bangladesh          22) Korea (North)        39) Saudi Arabia<br> 6) Bhutan          23) Korea (South)        40) Singapore<br> 7) Brunei          24) Kuwait            41) Sri Lanka<br> 8) Cambodia          25) Kyrgyzstan        42) Syria<br> 9) China          26) Laos            43) Taiwan<br>10) Cyprus          27) Lebanon            44) Tajikistan<br>11) East Timor          28) Macau            45) Thailand<br>12) Georgia          29) Malaysia            46) Turkmenistan<br>13) Hong Kong          30) Mongolia            47) United Arab Emirates<br>14) India          31) Myanmar (Burma)        48) Uzbekistan<br>15) Indonesia          32) Nepal            49) Vietnam<br>16) Iran          33) Oman            50) Yemen<br>17) Iraq          34) Pakistan<br><code>#? 9</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Please select one of the following time zone regions.<br>1) east China - Beijing, Guangdong, Shanghai, etc.<br>2) Heilongjiang (except Mohe), Jilin<br>3) central China - Sichuan, Yunnan, Guangxi, Shaanxi, Guizhou, etc.<br>4) most of Tibet &amp; Xinjiang<br>5) west Tibet &amp; Xinjiang<br><code>#? 1</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>The following information has been given:<br>    China<br>    east China - Beijing, Guangdong, Shanghai, etc.<br>Therefore TZ=’Asia/Shanghai’ will be used.<br>Local time is now:    Thu Nov 27 13:27:13 CST 2014.<br>Universal Time is now:    Thu Nov 27 05:27:13 UTC 2014.<br>Is the above information OK?<br>1) Yes<br>2) No<br><code>#? 1</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>You can make this change permanent for yourself by appending the line<br>    TZ=’Asia/Shanghai’; export TZ<br>to the file ‘.profile’ in your home directory; then log out and log in again.</p>
+</blockquote>
+<blockquote>
+<p>Here is that TZ value again, this time on standard output so that you<br>can use the /usr/bin/tzselect command in shell scripts:<br>Asia/Shanghai</p>
+</blockquote>
+<hr>
+<pre><code>cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+ntpdate time.windows.com
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2014/11/Gradle构建Android项目NDK集成路径问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/Gradle构建Android项目NDK集成路径问题/" itemprop="url">
+                  Gradle构建Android项目NDK集成路径问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-11-20 15:25:34 / 修改时间：15:39:10" itemprop="dateCreated datePublished" datetime="2014-11-20T15:25:34+08:00">2014-11-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用Gradle 构建Android项目时，jniLibs应该放在</p>
+<pre><code>src/main/jniLibs/&lt;abi&gt;/
+</code></pre><p>例如</p>
+<pre><code>src/main/jniLibs/armeabi-v7a/lib_hello.so
+src/main/jniLibs/x86/lib_hello.so
+</code></pre><p>或者自定义路径（修改build.gradle）</p>
+<pre><code>android {
+    sourceSets.main {
+        jniLibs.srcDirs = [&apos;native-libs&apos;]
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2014/11/Hello-World/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/Hello-World/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-11-13 14:12:38 / 修改时间：14:50:02" itemprop="dateCreated datePublished" datetime="2014-11-13T14:12:38+08:00">2014-11-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>仅仅是一篇测试日志.</p>
+<p>Just For Test</p>
+<p>当你看到这篇日志,说明<strong>Hexo</strong>生成成功了.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">EngrZhou</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/engrzhou" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:engrzhou@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EngrZhou</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
