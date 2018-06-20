@@ -108,25 +108,27 @@
 
 
 
-  <meta name="description" content="用Gradle 构建Android项目时，jniLibs应该放在 src/main/jniLibs/&amp;lt;abi&amp;gt;/ 例如 src/main/jniLibs/armeabi-v7a/lib_hello.so src/main/jniLibs/x86/lib_hello.so 或者自定义路径（修改build.gradle） android {     sourceSets.main {">
-<meta name="keywords" content="Gradle,NDK,jniLibs">
+  <meta name="description" content="推荐的截图工具有两款：1.flameshot 2.deepin-screenshot 以上两款截图工具在此处不再进行对比了，根据自己的喜好进行安装。 此处以Ubuntu18.04系统为例 选择自己喜欢的截图工具进行安装，安装方式： flameshot: 1apt install flameshot deepin-screenshot： 1apt install deepin-screenshot">
+<meta name="keywords" content="Ubuntu,screenshot,flameshot,deepin-screenshot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle构建Android项目NDK集成路径问题">
-<meta property="og:url" content="https://engrzhou.github.io/2014/11/Gradle构建Android项目NDK集成路径问题/index.html">
+<meta property="og:title" content="Ubuntu安装并配置第三方截图工具">
+<meta property="og:url" content="https://engrzhou.github.io/2018/06/Ubuntu安装并配置第三方截图工具/index.html">
 <meta property="og:site_name" content="EngrZhou&#39;s Blog">
-<meta property="og:description" content="用Gradle 构建Android项目时，jniLibs应该放在 src/main/jniLibs/&amp;lt;abi&amp;gt;/ 例如 src/main/jniLibs/armeabi-v7a/lib_hello.so src/main/jniLibs/x86/lib_hello.so 或者自定义路径（修改build.gradle） android {     sourceSets.main {">
+<meta property="og:description" content="推荐的截图工具有两款：1.flameshot 2.deepin-screenshot 以上两款截图工具在此处不再进行对比了，根据自己的喜好进行安装。 此处以Ubuntu18.04系统为例 选择自己喜欢的截图工具进行安装，安装方式： flameshot: 1apt install flameshot deepin-screenshot： 1apt install deepin-screenshot">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2014-11-20T07:39:10.000Z">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180620170013.png">
+<meta property="og:updated_time" content="2018-06-20T09:05:22.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gradle构建Android项目NDK集成路径问题">
-<meta name="twitter:description" content="用Gradle 构建Android项目时，jniLibs应该放在 src/main/jniLibs/&amp;lt;abi&amp;gt;/ 例如 src/main/jniLibs/armeabi-v7a/lib_hello.so src/main/jniLibs/x86/lib_hello.so 或者自定义路径（修改build.gradle） android {     sourceSets.main {">
+<meta name="twitter:title" content="Ubuntu安装并配置第三方截图工具">
+<meta name="twitter:description" content="推荐的截图工具有两款：1.flameshot 2.deepin-screenshot 以上两款截图工具在此处不再进行对比了，根据自己的喜好进行安装。 此处以Ubuntu18.04系统为例 选择自己喜欢的截图工具进行安装，安装方式： flameshot: 1apt install flameshot deepin-screenshot： 1apt install deepin-screenshot">
+<meta name="twitter:image" content="https://engrzhou.github.io/assets/20180620170013.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://engrzhou.github.io/2014/11/Gradle构建Android项目NDK集成路径问题/"/>
+  <link rel="canonical" href="https://engrzhou.github.io/2018/06/Ubuntu安装并配置第三方截图工具/"/>
 
 
 
@@ -136,7 +138,7 @@
   };
 </script>
 
-  <title>Gradle构建Android项目NDK集成路径问题 | EngrZhou's Blog</title>
+  <title>Ubuntu安装并配置第三方截图工具 | EngrZhou's Blog</title>
   
 
 
@@ -297,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2014/11/Gradle构建Android项目NDK集成路径问题/">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/Ubuntu安装并配置第三方截图工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EngrZhou">
@@ -314,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Gradle构建Android项目NDK集成路径问题
+          <h1 class="post-title" itemprop="name headline">Ubuntu安装并配置第三方截图工具
               
             
           </h1>
@@ -339,7 +341,7 @@
                 
               
 
-              <time title="创建时间：2014-11-20 15:25:34 / 修改时间：15:39:10" itemprop="dateCreated datePublished" datetime="2014-11-20T15:25:34+08:00">2014-11-20</time>
+              <time title="创建时间：2018-06-20 16:53:10 / 修改时间：17:05:22" itemprop="dateCreated datePublished" datetime="2018-06-20T16:53:10+08:00">2018-06-20</time>
             
 
             
@@ -377,18 +379,18 @@
       
 
       
-        <p>用Gradle 构建Android项目时，jniLibs应该放在</p>
-<pre><code>src/main/jniLibs/&lt;abi&gt;/
-</code></pre><p>例如</p>
-<pre><code>src/main/jniLibs/armeabi-v7a/lib_hello.so
-src/main/jniLibs/x86/lib_hello.so
-</code></pre><p>或者自定义路径（修改build.gradle）</p>
-<pre><code>android {
-    sourceSets.main {
-        jniLibs.srcDirs = [&apos;native-libs&apos;]
-    }
-}
-</code></pre>
+        <p><strong>推荐的截图工具有两款：</strong><br>1.<a href="https://github.com/lupoDharkael/flameshot" target="_blank" rel="noopener">flameshot</a></p>
+<p>2.<a href="https://github.com/linuxdeepin/deepin-screenshot" target="_blank" rel="noopener">deepin-screenshot</a></p>
+<p>以上两款截图工具在此处不再进行对比了，根据自己的喜好进行安装。</p>
+<p>此处以Ubuntu18.04系统为例</p>
+<p>选择自己喜欢的截图工具进行安装，安装方式：</p>
+<p><strong>flameshot:</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install flameshot</span><br></pre></td></tr></table></figure>
+<p><strong>deepin-screenshot：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install deepin-screenshot</span><br></pre></td></tr></table></figure>
+<p><strong>配置快捷键：</strong><br>设置–&gt;设备–&gt;键盘–&gt;滚动到底部点击“+”增加自定义快捷键<br>名称根据自己的喜好进行设置，如果使用的是flameshot，则命令填写<code>flameshot gui</code>如果使用的是deepin-screenshot，则命令填写<code>deepin-screenshot</code>，然后根据自己的喜好设置快捷键，本人习惯了微信的ALT+A。</p>
+<p><img src="/assets/20180620170013.png" alt="20180620170013"></p>
+
       
     </div>
 
@@ -408,11 +410,13 @@ src/main/jniLibs/x86/lib_hello.so
       
         <div class="post-tags">
           
-            <a href="/tags/Gradle/" rel="tag"># Gradle</a>
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
           
-            <a href="/tags/NDK/" rel="tag"># NDK</a>
+            <a href="/tags/screenshot/" rel="tag"># screenshot</a>
           
-            <a href="/tags/jniLibs/" rel="tag"># jniLibs</a>
+            <a href="/tags/flameshot/" rel="tag"># flameshot</a>
+          
+            <a href="/tags/deepin-screenshot/" rel="tag"># deepin-screenshot</a>
           
         </div>
       
@@ -425,8 +429,8 @@ src/main/jniLibs/x86/lib_hello.so
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/11/Hello-World/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/06/Linux加域/" rel="next" title="Ubuntu加域">
+                <i class="fa fa-chevron-left"></i> Ubuntu加域
               </a>
             
           </div>
@@ -434,10 +438,6 @@ src/main/jniLibs/x86/lib_hello.so
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/11/Ubuntu-server-设置时区并更新时间/" rel="prev" title="Ubuntu server 设置时区并更新时间">
-                Ubuntu server 设置时区并更新时间 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
