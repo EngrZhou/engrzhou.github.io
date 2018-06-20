@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="设定默认规则： iptables -P INPUT  DROP iptables -P OUPUT ACCEPT iptables -P FORWAD ACCEPT 允许SSH： iptables -A INPUT -p tcp --dport 22 -j ACCEPT 允许Shadowsocks端口： iptables -A INPUT -p tcp --dport 8388 -j ACCEPT">
-<meta name="keywords" content="Ubuntu,Shadowsocks">
+  <meta name="description" content="开启点击Dock已经打开的应用图标，使其最小化：1gsettings set org.gnome.shell.extensions.dash-to-dock click-action &apos;minimize&apos;">
+<meta name="keywords" content="Ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ShadowSocks服务器搭建iptables配置">
-<meta property="og:url" content="https://engrzhou.github.io/2015/01/ShadowSocks服务器搭建iptables配置/index.html">
+<meta property="og:title" content="Ubuntu 18.04配置Dock点击最小化">
+<meta property="og:url" content="https://engrzhou.github.io/2018/06/Ubuntu-18-04配置Dock点击最小化/index.html">
 <meta property="og:site_name" content="EngrZhou&#39;s Blog">
-<meta property="og:description" content="设定默认规则： iptables -P INPUT  DROP iptables -P OUPUT ACCEPT iptables -P FORWAD ACCEPT 允许SSH： iptables -A INPUT -p tcp --dport 22 -j ACCEPT 允许Shadowsocks端口： iptables -A INPUT -p tcp --dport 8388 -j ACCEPT">
+<meta property="og:description" content="开启点击Dock已经打开的应用图标，使其最小化：1gsettings set org.gnome.shell.extensions.dash-to-dock click-action &apos;minimize&apos;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2015-04-14T09:50:20.000Z">
+<meta property="og:updated_time" content="2018-06-20T09:49:09.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ShadowSocks服务器搭建iptables配置">
-<meta name="twitter:description" content="设定默认规则： iptables -P INPUT  DROP iptables -P OUPUT ACCEPT iptables -P FORWAD ACCEPT 允许SSH： iptables -A INPUT -p tcp --dport 22 -j ACCEPT 允许Shadowsocks端口： iptables -A INPUT -p tcp --dport 8388 -j ACCEPT">
+<meta name="twitter:title" content="Ubuntu 18.04配置Dock点击最小化">
+<meta name="twitter:description" content="开启点击Dock已经打开的应用图标，使其最小化：1gsettings set org.gnome.shell.extensions.dash-to-dock click-action &apos;minimize&apos;">
 
 
 
 
 
 
-  <link rel="canonical" href="https://engrzhou.github.io/2015/01/ShadowSocks服务器搭建iptables配置/"/>
+  <link rel="canonical" href="https://engrzhou.github.io/2018/06/Ubuntu-18-04配置Dock点击最小化/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>ShadowSocks服务器搭建iptables配置 | EngrZhou's Blog</title>
+  <title>Ubuntu 18.04配置Dock点击最小化 | EngrZhou's Blog</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/01/ShadowSocks服务器搭建iptables配置/">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/Ubuntu-18-04配置Dock点击最小化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EngrZhou">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ShadowSocks服务器搭建iptables配置
+          <h1 class="post-title" itemprop="name headline">Ubuntu 18.04配置Dock点击最小化
               
             
           </h1>
@@ -339,24 +339,12 @@
                 
               
 
-              <time title="创建时间：2015-01-26 10:50:49" itemprop="dateCreated datePublished" datetime="2015-01-26T10:50:49+08:00">2015-01-26</time>
+              <time title="创建时间：2018-06-20 17:44:00 / 修改时间：17:49:09" itemprop="dateCreated datePublished" datetime="2018-06-20T17:44:00+08:00">2018-06-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2015-04-14 17:50:20" itemprop="dateModified" datetime="2015-04-14T17:50:20+08:00">2015-04-14</time>
               
             
           </span>
@@ -389,21 +377,8 @@
       
 
       
-        <p>设定默认规则：</p>
-<pre><code>iptables -P INPUT  DROP
-iptables -P OUPUT ACCEPT
-iptables -P FORWAD ACCEPT
-</code></pre><p>允许SSH：</p>
-<pre><code>iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-</code></pre><p>允许Shadowsocks端口：</p>
-<pre><code>iptables -A INPUT -p tcp --dport 8388 -j ACCEPT
-</code></pre><p>允许合法链接并丢弃非法连接：</p>
-<pre><code>iptables -I INPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
-iptables -I INPUT -m state --state INVALID -j DROP
-</code></pre><p>保存或恢复iptables规则</p>
-<pre><code>iptables-save &gt; somefile
-iptables-restore &lt; somefiles
-</code></pre>
+        <p>开启点击Dock已经打开的应用图标，使其最小化：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -425,8 +400,6 @@ iptables-restore &lt; somefiles
           
             <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
           
-            <a href="/tags/Shadowsocks/" rel="tag"># Shadowsocks</a>
-          
         </div>
       
 
@@ -438,8 +411,8 @@ iptables-restore &lt; somefiles
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/01/魅族Flyme开启USB调试模式之后，无法在Ubuntu等系统下识别的解决方法/" rel="next" title="魅族Flyme开启USB调试模式之后，无法在Ubuntu等系统下识别的解决方法">
-                <i class="fa fa-chevron-left"></i> 魅族Flyme开启USB调试模式之后，无法在Ubuntu等系统下识别的解决方法
+              <a href="/2018/06/Ubuntu安装并配置第三方截图工具/" rel="next" title="Ubuntu安装并配置第三方截图工具">
+                <i class="fa fa-chevron-left"></i> Ubuntu安装并配置第三方截图工具
               </a>
             
           </div>
@@ -447,10 +420,6 @@ iptables-restore &lt; somefiles
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/03/Can-t-use-Subversion-command-line-client-错误解决办法/" rel="prev" title="Can't use Subversion command line client 错误解决办法">
-                Can't use Subversion command line client 错误解决办法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
