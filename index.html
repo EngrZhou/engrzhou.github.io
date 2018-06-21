@@ -293,6 +293,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/Ubuntu-使用Sublime-Text的一些配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/Ubuntu-使用Sublime-Text的一些配置/" itemprop="url">
+                  Ubuntu 使用Sublime Text的一些配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-21 11:24:54 / 修改时间：11:39:40" itemprop="dateCreated datePublished" datetime="2018-06-21T11:24:54+08:00">2018-06-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="安装Sublime-Text"><a href="#安装Sublime-Text" class="headerlink" title="安装Sublime Text"></a>安装Sublime Text</h3><ol>
+<li><p>导入密钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加repo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository "deb https://download.sublimetext.com/ apt/stable/"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装Sublime Text</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install sublime-text</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="使其能使用搜狗拼音输入法"><a href="#使其能使用搜狗拼音输入法" class="headerlink" title="使其能使用搜狗拼音输入法"></a>使其能使用搜狗拼音输入法</h3><ol>
+<li><p>git clone 脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/lyfeyaj/sublime-text-imfix.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd sublime-text-imfix/</span><br><span class="line">./sublime-imfix</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="/assets/20180621113216.png" alt="20180621113216"></p>
+<h3 id="替换默认的文本编辑器gedit为Sublime-Text"><a href="#替换默认的文本编辑器gedit为Sublime-Text" class="headerlink" title="替换默认的文本编辑器gedit为Sublime Text"></a>替换默认的文本编辑器gedit为Sublime Text</h3><p>使用Sublime Text打开默认配置表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo subl /etc/gnome/defaults.list</span><br></pre></td></tr></table></figure>
+<p><img src="assets/20180621113438.png" alt="20180621113438"><br>全局替换<strong>gedit.desktop</strong>为<strong>sublime_text.desktop</strong>,并保存。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/Ubuntu-18-04配置Dock点击最小化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -887,191 +1049,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/04/tcp-hybla-编译以及加载/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EngrZhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EngrZhou's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/tcp-hybla-编译以及加载/" itemprop="url">
-                  tcp_hybla 编译以及加载
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-04-14 17:36:42" itemprop="dateCreated datePublished" datetime="2015-04-14T17:36:42+08:00">2015-04-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-01-07 19:51:24" itemprop="dateModified" datetime="2016-01-07T19:51:24+08:00">2016-01-07</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>源地址：<br><a href="https://www.v2ex.com/t/114788" target="_blank" rel="noopener">https://www.v2ex.com/t/114788</a><br><a href="http://www.fslk.net/?p=822" target="_blank" rel="noopener">http://www.fslk.net/?p=822</a></p>
-<p><strong>经测试ubuntu 14.10 3.19.1-x86_64-linode53确实有效</strong><br>以下为原文，有两处是在实践过程中根据实际情况进行了修改，已经做了标注。</p>
-<p>国情原因，中美线路有时掉包率会很高，导致网站访问速度慢，Linux 机器缺省的TCP协议发包算法是cubic，如果改为hybla，在掉包率高时可以大幅提高访问速度；如果cubic只能流畅观看480p的视频，改为hybla则可以流畅观看720p的视频，效果提升是明显的，但很多朋友不会编译内核模块，写个小白教程供大家参考，照以下几步操作一遍，你会发现编译内核模块原来相当简单。</p>
-<p>以下教程每行#后面的为需要输入的命令，操作时需要root权限，需要你会使用vi，我的系统是Ubuntu 12.04.2 LTS，其他Linux系统命令不会差别很大，请按自己的情况修改内核名称。</p>
-<ol>
-<li><p>查看你的机器内核版本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">3.11.6-x86_64-linode35</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>去 <a href="https://www.kernel.org/pub/linux/kernel/v3.0/" target="_blank" rel="noopener">https://www.kernel.org/pub/linux/kernel/v3.0/</a> 下载相同版本的源码到任意目录，解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mkdir /root/mykernel</span></span><br><span class="line"><span class="comment">#cd /root/mykernel</span></span><br><span class="line"><span class="comment">#wget https://www.kernel.org/pub/linux/kernel/v3.0/linux-3.11.6.tar.gz</span></span><br><span class="line"><span class="comment">#tar xzvf linux-3.11.6.tar.gz</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装内核编译工具</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#apt-get update &amp;&amp; apt-get install -y build-essential libncurses5-dev</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>复制Linode原来的内核编译配置文件到源码根目录，在<code>CONFIG_TCP_CONG_CUBIC=y</code>下面增加一行 <code>CONFIG_TCP_CONG_HYBLA=y</code>，再生成编译模块需要的内核</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd linux-3.11.6</span></span><br><span class="line"><span class="comment">#zcat /proc/config.gz &gt; .config</span></span><br><span class="line"><span class="comment">#vi .config</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>查找<code>CONFIG_TCP_CONG_CUBIC=y</code>，在下面增加一行 <code>CONFIG_TCP_CONG_HYBLA=y</code>，保存<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#make</span></span><br></pre></td></tr></table></figure></p>
-<ol start="5">
-<li>耐心等待编译内核完成，单核编译大约需15分钟，完成后，进入模块所在的目录，编写Makefile<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd net/ipv4/</span></span><br><span class="line"><span class="comment">#mv Makefile Makefile.old</span></span><br><span class="line"><span class="comment">#vi Makefile</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>以下是Makefle的内容，注意要把KDIR修改为你自己的源码路径，其他则照抄就可以了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Makefile for tcp_hybla.ko</span></span><br><span class="line">obj-m := tcp_hybla.o</span><br><span class="line">KDIR := /root/mykernel/linux-3.11.6</span><br><span class="line">PWD := $(shell <span class="built_in">pwd</span>)</span><br><span class="line">default := $(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules</span><br></pre></td></tr></table></figure>
-<p>6.进入源码根目录，编译模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd /root/mykernel/linux-3.11.6/</span></span><br><span class="line"><span class="comment">#make modules</span></span><br></pre></td></tr></table></figure></p>
-<p>7.进入到模块所在目录，复制生成的 tcp_hybla.ko 到加载目录，测试加载模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd /root/mykernel/linux-3.11.6/net/ipv4</span></span><br><span class="line"><span class="comment">#cp tcp_hybla.ko /root/mykernel/</span></span><br><span class="line"><span class="comment">#cd /root/mykernel/</span></span><br></pre></td></tr></table></figure></p>
-<p>加载前<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sysctl net.ipv4.tcp_available_congestion_control</span></span><br><span class="line">net.ipv4.tcp_available_congestion_control = cubic reno</span><br><span class="line"><span class="comment">#insmod tcp_hybla.ko</span></span><br></pre></td></tr></table></figure></p>
-<p>加载后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sysctl net.ipv4.tcp_available_congestion_control</span></span><br><span class="line">net.ipv4.tcp_available_congestion_control = cubic reno hybla</span><br></pre></td></tr></table></figure></p>
-<p>设置hybal为优先<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sysctl net.ipv4.tcp_congestion_control=hybla</span></span><br></pre></td></tr></table></figure></p>
-<p>8.设置开机自动加载模块，把<code>tcp_hybla.ko</code> 复制到 <code>/lib/modules/3.11.6-x86_64-linode35/kernel/net/ipv4</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd /lib/modules/3.11.6-x86_64-linode35</span></span><br><span class="line"><span class="comment">#mkdir -p kernel/net/ipv4</span></span><br><span class="line"><span class="comment">#cd kernel/net/ipv4</span></span><br><span class="line"><span class="comment">#cp /root/mykernel/tcp_hybla.ko ./</span></span><br><span class="line"><span class="comment">#cd /lib/modules/3.11.6-x86_64-linode35</span></span><br><span class="line"><span class="comment">#depmod -a</span></span><br></pre></td></tr></table></figure></p>
-<p>（新）此处如果WARNING可以输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch modules.order</span><br><span class="line">touch modules.builtin</span><br></pre></td></tr></table></figure></p>
-<p>9.修改/etc/sysctl.conf 开机自动设置hybal为优先<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vi /etc/sysctl.conf</span></span><br><span class="line">net.ipv4.tcp_congestion_control = hybla</span><br></pre></td></tr></table></figure></p>
-<p>用这9步就可以了，只是动态加载模块，不用更换内核，不用停机重启，不影响网站正常运营，相当方便，值得尝试，参考这个方法可以为 Linode 动态加载任何需要的内核模块，如fastopen，htcp，highspeed 等，有任何问题请到推上找我交流 @interwebdev ，转载请注明出处( <a href="http://www.fslk.net/?p=822" target="_blank" rel="noopener">http://www.fslk.net/?p=822</a> ) …</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1119,7 +1096,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1168,7 +1145,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
