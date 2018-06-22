@@ -293,6 +293,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/do-while-false-的使用场景/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/do-while-false-的使用场景/" itemprop="url">
+                  do{...}while(false)的使用场景
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-22 10:13:41 / 修改时间：10:25:10" itemprop="dateCreated datePublished" datetime="2018-06-22T10:13:41+08:00">2018-06-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天有同学疑问为什么我在某处代码中使用了以下片段代码，这样的好处是什么。</p>
+<p>先说下结论吧：<strong>简化某些场景下的多级判断的代码嵌套</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">..</span><br><span class="line">.&#125;<span class="keyword">while</span>(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<p>结论只是为了告诉你作用，但是并不能很直观的理解，于是我写了一段代码，方便理解。</p>
+<p>为了更直观的理解其中的意思，我变量名使用了中文进行命名。</p>
+<h4 id="正常的场景"><a href="#正常的场景" class="headerlink" title="正常的场景"></a>正常的场景</h4><p>大部分人写一些逻辑的时候，可能会出现以下示例的代码风格情况：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 带钥匙 = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 电瓶有电 = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 车胎气足 = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 车喇叭可用 = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String NORMAL_TAG = <span class="string">"正常模式:"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String FAST_TAG = <span class="string">"简化模式:"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (带钥匙) &#123;</span><br><span class="line">			<span class="keyword">if</span> (电瓶有电) &#123;</span><br><span class="line">				<span class="keyword">if</span> (车胎气足) &#123;</span><br><span class="line">					<span class="keyword">if</span> (车喇叭可用) &#123;</span><br><span class="line">						printSuccess(NORMAL_TAG);</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						printWarn(NORMAL_TAG);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					printWarn(NORMAL_TAG);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				printWarn(NORMAL_TAG);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			printWarn(NORMAL_TAG);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printWarn</span><span class="params">(String caller)</span> </span>&#123;</span><br><span class="line">		System.out.println(caller + <span class="string">"车况异常"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printSuccess</span><span class="params">(String caller)</span> </span>&#123;</span><br><span class="line">		System.out.println(caller + <span class="string">"车况检查完毕,车况良好,可以使用"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="do-…-while-false-场景"><a href="#do-…-while-false-场景" class="headerlink" title="do{…}while(false)场景"></a>do{…}while(false)场景</h4><p>而我们使用<code>do{...}while(false)</code>的情况下，可以这样写：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 带钥匙 = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 电瓶有电 = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 车胎气足 = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> 车喇叭可用 = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String NORMAL_TAG = <span class="string">"正常模式:"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String FAST_TAG = <span class="string">"简化模式:"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">do</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (!带钥匙) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (!电瓶有电) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (!车胎气足) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (!车喇叭可用) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			printSuccess(FAST_TAG);</span><br><span class="line">		&#125; <span class="keyword">while</span> (<span class="keyword">false</span>);</span><br><span class="line">		printWarn(FAST_TAG);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printWarn</span><span class="params">(String caller)</span> </span>&#123;</span><br><span class="line">		System.out.println(caller + <span class="string">"车况异常"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printSuccess</span><span class="params">(String caller)</span> </span>&#123;</span><br><span class="line">		System.out.println(caller + <span class="string">"车况检查完毕,车况良好,可以使用"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/Ubuntu-使用Sublime-Text的一些配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -886,169 +1032,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2016/01/Shasowsocks-Ubuntu内核优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EngrZhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EngrZhou's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/Shasowsocks-Ubuntu内核优化/" itemprop="url">
-                  Shasowsocks Ubuntu内核优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-01-07 17:49:12" itemprop="dateCreated datePublished" datetime="2016-01-07T17:49:12+08:00">2016-01-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-06-20 17:10:05" itemprop="dateModified" datetime="2018-06-20T17:10:05+08:00">2018-06-20</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>第一步，增加系统文件描述符的最大限数</p>
-<p>编辑文件<code>limits.conf</code></p>
-<pre><code>vi /etc/security/limits.conf
-</code></pre><p>增加以下两行</p>
-<pre><code>* soft nofile 51200
-* hard nofile 51200
-</code></pre><p>启动shadowsocks服务器之前，设置以下参数</p>
-<pre><code>ulimit n 51200
-</code></pre><p><em>加入开机启动</em></p>
-<p>第二步，调整内核参数<br>修改配置文件 <code>/etc/sysctl.conf</code></p>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">fs.file-max = 51200</span><br><span class="line"><span class="comment">#提高整个系统的文件限制</span></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line"><span class="comment">#表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；</span></span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line"><span class="comment">#表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；</span></span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line"><span class="comment">#表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭；</span></span><br><span class="line"><span class="comment">#为了对NAT设备更友好，建议设置为0。</span></span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line"><span class="comment">#修改系統默认的 TIMEOUT 时间。</span></span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line"><span class="comment">#表示当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为20分钟。</span></span><br><span class="line"><span class="comment">#表示用于向外连接的端口范围。缺省情况下很小：32768到61000，改为10000到65000。</span></span><br><span class="line"><span class="comment">#（注意：这里不要将最低值设的太低，否则可能会占用掉正常的端口！）</span></span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000 </span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line"><span class="comment">#表示SYN队列的长度，默认为1024，加大队列长度为8192，可以容纳更多等待连接的网络连接数。</span></span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line"><span class="comment">#表示系统同时保持TIME_WAIT的最大数量，如果超过这个数字，TIME_WAIT将立刻被清除并打印警告信息。</span></span><br><span class="line"><span class="comment">#额外的，对于内核版本新于**3.7.1**的，我们可以开启tcp_fastopen：</span></span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line"></span><br><span class="line"><span class="comment"># increase TCP max buffer size settable using setsockopt()</span></span><br><span class="line">net.core.rmem_max = 67108864 </span><br><span class="line">net.core.wmem_max = 67108864 </span><br><span class="line"><span class="comment"># increase Linux autotuning TCP buffer limit</span></span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line"><span class="comment"># increase the length of the processor input queue</span></span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line"><span class="comment"># recommended for hosts with jumbo frames enabled</span></span><br><span class="line">net.ipv4.tcp_mtu_probing=1</span><br></pre></td></tr></table></figure>
-</code></pre><p>修改后执行 <code>sysctl -p</code> 使配置生效</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1096,7 +1079,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1147,7 +1130,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
