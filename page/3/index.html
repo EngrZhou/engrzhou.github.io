@@ -293,6 +293,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/01/ShadowSocks服务器搭建iptables配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/ShadowSocks服务器搭建iptables配置/" itemprop="url">
+                  ShadowSocks服务器搭建iptables配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-01-26 10:50:49" itemprop="dateCreated datePublished" datetime="2015-01-26T10:50:49+08:00">2015-01-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2015-04-14 17:50:20" itemprop="dateModified" datetime="2015-04-14T17:50:20+08:00">2015-04-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>设定默认规则：</p>
+<pre><code>iptables -P INPUT  DROP
+iptables -P OUPUT ACCEPT
+iptables -P FORWAD ACCEPT
+</code></pre><p>允许SSH：</p>
+<pre><code>iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+</code></pre><p>允许Shadowsocks端口：</p>
+<pre><code>iptables -A INPUT -p tcp --dport 8388 -j ACCEPT
+</code></pre><p>允许合法链接并丢弃非法连接：</p>
+<pre><code>iptables -I INPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -I INPUT -m state --state INVALID -j DROP
+</code></pre><p>保存或恢复iptables规则</p>
+<pre><code>iptables-save &gt; somefile
+iptables-restore &lt; somefiles
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2015/01/魅族Flyme开启USB调试模式之后，无法在Ubuntu等系统下识别的解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -943,153 +1108,11 @@ src/main/jniLibs/x86/lib_hello.so
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2014/11/Hello-World/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EngrZhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EngrZhou's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/11/Hello-World/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2014-11-13 14:12:38 / 修改时间：14:50:02" itemprop="dateCreated datePublished" datetime="2014-11-13T14:12:38+08:00">2014-11-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>仅仅是一篇测试日志.</p>
-<p>Just For Test</p>
-<p>当你看到这篇日志,说明<strong>Hexo</strong>生成成功了.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1132,7 +1155,7 @@ src/main/jniLibs/x86/lib_hello.so
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

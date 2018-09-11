@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="算是一个公开的个人笔记本吧！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="https://engrzhou.github.io/about/index.html">
+  <meta name="description" content="最近在开发过程中发现一个现象，当我在打开[设置]-[应用列表]-[X应用]-[权限]页面时候，SYSTEM_ALERT_WINDOW 的悬浮窗，会自动隐藏。经过123zhou@iubuntu:~$ adb shell dumpsys window windows | grep -E &apos;mCurrentFocus|mFocusedApp&apos;  mCurrentFocus=Window&amp;#123;30e">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用权限Activity隐藏SYSTEM_ALERT_WINDOW 的窗口问题分析">
+<meta property="og:url" content="https://engrzhou.github.io/2018/09/应用权限Activity隐藏SYSTEM-ALERT-WINDOW-的窗口问题分析/index.html">
 <meta property="og:site_name" content="EngrZhou&#39;s Blog">
-<meta property="og:description" content="算是一个公开的个人笔记本吧！">
+<meta property="og:description" content="最近在开发过程中发现一个现象，当我在打开[设置]-[应用列表]-[X应用]-[权限]页面时候，SYSTEM_ALERT_WINDOW 的悬浮窗，会自动隐藏。经过123zhou@iubuntu:~$ adb shell dumpsys window windows | grep -E &apos;mCurrentFocus|mFocusedApp&apos;  mCurrentFocus=Window&amp;#123;30e">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-20T09:16:21.937Z">
+<meta property="og:updated_time" content="2018-09-11T11:24:51.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="算是一个公开的个人笔记本吧！">
+<meta name="twitter:title" content="应用权限Activity隐藏SYSTEM_ALERT_WINDOW 的窗口问题分析">
+<meta name="twitter:description" content="最近在开发过程中发现一个现象，当我在打开[设置]-[应用列表]-[X应用]-[权限]页面时候，SYSTEM_ALERT_WINDOW 的悬浮窗，会自动隐藏。经过123zhou@iubuntu:~$ adb shell dumpsys window windows | grep -E &apos;mCurrentFocus|mFocusedApp&apos;  mCurrentFocus=Window&amp;#123;30e">
 
 
 
 
 
 
-  <link rel="canonical" href="https://engrzhou.github.io/about/"/>
+  <link rel="canonical" href="https://engrzhou.github.io/2018/09/应用权限Activity隐藏SYSTEM-ALERT-WINDOW-的窗口问题分析/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>关于 | EngrZhou's Blog</title>
+  <title>应用权限Activity隐藏SYSTEM_ALERT_WINDOW 的窗口问题分析 | EngrZhou's Blog</title>
   
 
 
@@ -227,7 +228,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
   </li>
@@ -256,25 +257,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -301,44 +283,169 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/09/应用权限Activity隐藏SYSTEM-ALERT-WINDOW-的窗口问题分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">关于</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>算是一个公开的个人笔记本吧！</p>
-
+          <h1 class="post-title" itemprop="name headline">应用权限Activity隐藏SYSTEM_ALERT_WINDOW 的窗口问题分析
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-11 19:16:07 / 修改时间：19:24:51" itemprop="dateCreated datePublished" datetime="2018-09-11T19:16:07+08:00">2018-09-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>最近在开发过程中发现一个现象，当我在打开[设置]-[应用列表]-[X应用]-[权限]页面时候，SYSTEM_ALERT_WINDOW 的悬浮窗，会自动隐藏。<br>经过<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zhou@iubuntu:~$ adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'</span><br><span class="line">  mCurrentFocus=Window&#123;30e3ac2 u0 com.google.android.packageinstaller/com.android.packageinstaller.permission.ui.ManagePermissionsActivity&#125;</span><br><span class="line">  mFocusedApp=AppWindowToken&#123;2096837 token=Token&#123;e974136 ActivityRecord&#123;b06f2d1 u0 com.google.android.packageinstaller/com.android.packageinstaller.permission.ui.ManagePermissionsActivity t19485&#125;&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>发现[应用权限]Activity对应的是<code>ManagePermissionsActivity</code>类，而通过源码看到<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagePermissionsActivity</span> <span class="keyword">extends</span> <span class="title">OverlayTouchActivity</span></span></span><br></pre></td></tr></table></figure></p>
+<p>继承了<code>OverlayTouchActivity</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.android.packageinstaller.permission.ui;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OverlayTouchActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从<code>getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Flag to indicate that any window added by an application process that is of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> #TYPE_TOAST&#125; or that requires</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> android.app.AppOpsManager#OP_SYSTEM_ALERT_WINDOW&#125; permission should be hidden when</span></span><br><span class="line"><span class="comment"> * this window is visible.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@hide</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermission</span>(android.Manifest.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS = <span class="number">0x00080000</span>;</span><br></pre></td></tr></table></figure>
+<p>对应源码看到了原因：</p>
+<p><strong>当此windows可见的时候，TYPE_TOAST 和 OP_SYSTEM_ALERT_WINDOW都会被隐藏</strong>。</p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/Openwrt路由通过Zerotier组网实现异地内网互访/" rel="next" title="Openwrt路由通过Zerotier组网实现异地内网互访">
+                <i class="fa fa-chevron-left"></i> Openwrt路由通过Zerotier组网实现异地内网互访
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 

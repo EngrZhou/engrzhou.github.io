@@ -293,6 +293,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/09/应用权限Activity隐藏SYSTEM-ALERT-WINDOW-的窗口问题分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/应用权限Activity隐藏SYSTEM-ALERT-WINDOW-的窗口问题分析/" itemprop="url">
+                  应用权限Activity隐藏SYSTEM_ALERT_WINDOW 的窗口问题分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-11 19:16:07 / 修改时间：19:24:51" itemprop="dateCreated datePublished" datetime="2018-09-11T19:16:07+08:00">2018-09-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在开发过程中发现一个现象，当我在打开[设置]-[应用列表]-[X应用]-[权限]页面时候，SYSTEM_ALERT_WINDOW 的悬浮窗，会自动隐藏。<br>经过<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zhou@iubuntu:~$ adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'</span><br><span class="line">  mCurrentFocus=Window&#123;30e3ac2 u0 com.google.android.packageinstaller/com.android.packageinstaller.permission.ui.ManagePermissionsActivity&#125;</span><br><span class="line">  mFocusedApp=AppWindowToken&#123;2096837 token=Token&#123;e974136 ActivityRecord&#123;b06f2d1 u0 com.google.android.packageinstaller/com.android.packageinstaller.permission.ui.ManagePermissionsActivity t19485&#125;&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>发现[应用权限]Activity对应的是<code>ManagePermissionsActivity</code>类，而通过源码看到<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagePermissionsActivity</span> <span class="keyword">extends</span> <span class="title">OverlayTouchActivity</span></span></span><br></pre></td></tr></table></figure></p>
+<p>继承了<code>OverlayTouchActivity</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.android.packageinstaller.permission.ui;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OverlayTouchActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从<code>getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Flag to indicate that any window added by an application process that is of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> #TYPE_TOAST&#125; or that requires</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> android.app.AppOpsManager#OP_SYSTEM_ALERT_WINDOW&#125; permission should be hidden when</span></span><br><span class="line"><span class="comment"> * this window is visible.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@hide</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermission</span>(android.Manifest.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS = <span class="number">0x00080000</span>;</span><br></pre></td></tr></table></figure>
+<p>对应源码看到了原因：</p>
+<p><strong>当此windows可见的时候，TYPE_TOAST 和 OP_SYSTEM_ALERT_WINDOW都会被隐藏</strong>。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/07/Openwrt路由通过Zerotier组网实现异地内网互访/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -962,161 +1109,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/06/Ubuntu安装并配置第三方截图工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EngrZhou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EngrZhou's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/Ubuntu安装并配置第三方截图工具/" itemprop="url">
-                  Ubuntu安装并配置第三方截图工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-06-20 16:53:10 / 修改时间：17:05:22" itemprop="dateCreated datePublished" datetime="2018-06-20T16:53:10+08:00">2018-06-20</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>推荐的截图工具有两款：</strong><br>1.<a href="https://github.com/lupoDharkael/flameshot" target="_blank" rel="noopener">flameshot</a></p>
-<p>2.<a href="https://github.com/linuxdeepin/deepin-screenshot" target="_blank" rel="noopener">deepin-screenshot</a></p>
-<p>以上两款截图工具在此处不再进行对比了，根据自己的喜好进行安装。</p>
-<p>此处以Ubuntu18.04系统为例</p>
-<p>选择自己喜欢的截图工具进行安装，安装方式：</p>
-<p><strong>flameshot:</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install flameshot</span><br></pre></td></tr></table></figure>
-<p><strong>deepin-screenshot：</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install deepin-screenshot</span><br></pre></td></tr></table></figure>
-<p><strong>配置快捷键：</strong><br>设置–&gt;设备–&gt;键盘–&gt;滚动到底部点击“+”增加自定义快捷键<br>名称根据自己的喜好进行设置，如果使用的是flameshot，则命令填写<code>flameshot gui</code>如果使用的是deepin-screenshot，则命令填写<code>deepin-screenshot</code>，然后根据自己的喜好设置快捷键，本人习惯了微信的ALT+A。</p>
-<p><img src="/assets/20180620170013.png" alt="20180620170013"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1159,7 +1156,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
