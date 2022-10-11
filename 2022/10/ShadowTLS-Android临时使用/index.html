@@ -28,7 +28,7 @@
 <meta property="og:description" content="因Shadow TLS 目前刚诞生不久，还没有成熟的配套Android端软件，因此使用以下方案进行临时的使用。  前提条件 Android 手机需要root权限  Clash   使用方法https:&#x2F;&#x2F;github.com&#x2F;ihciah&#x2F;shadow-tls&#x2F;releases 下载 shadow-tls-aarch64-unknown-linux-musl 二进制文件 然后将文件push到 &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-10T12:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-11T06:10:48.250Z">
+<meta property="article:modified_time" content="2022-10-11T06:45:11.696Z">
 <meta property="article:author" content="EngrZhou">
 <meta property="article:tag" content="Shadowsocks">
 <meta property="article:tag" content="Shadow TLS">
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-11 14:10:48" itemprop="dateModified" datetime="2022-10-11T14:10:48+08:00">2022-10-11</time>
+                <time title="修改时间：2022-10-11 14:45:11" itemprop="dateModified" datetime="2022-10-11T14:45:11+08:00">2022-10-11</time>
               </span>
 
           
@@ -220,7 +220,7 @@
 <p>然后将文件push到 &#x2F;data&#x2F;local&#x2F;tmp&#x2F;下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push ./shadow-tls-aarch64-unknown-linux-musl /data/local/tmp/</span><br></pre></td></tr></table></figure>
 <p>将Shadow TLS后台静默运行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">polaris:/ $ su</span><br><span class="line">polaris:/ # nohup ./shadow-tls-aarch64-unknown-linux-musl client --listen 127.0.0.1:10810 --server 你的IP:443 --sni cloud.tencent.com --password 778E23076EE9 &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zhou@ubuntu ~ % adb shell</span><br><span class="line">polaris:/ $ cd /data/local/tmp</span><br><span class="line">polaris:/data/local/tmp $ su</span><br><span class="line">polaris:/data/local/tmp # nohup ./shadow-tls-aarch64-unknown-linux-musl client --listen 127.0.0.1:10810 --server 你的IP:443 --sni cloud.tencent.com --password 778E23076EE9 &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 
 <p>修改clash配置 config.yaml 文件将server和端口，改为本地监听的端口。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">proxies:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">&quot;shadowtls&quot;</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">ss</span></span><br><span class="line">    <span class="attr">server:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">10810</span></span><br><span class="line">    <span class="attr">cipher:</span> <span class="string">chacha20-ietf-poly1305</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;8E28A8AC&quot;</span></span><br><span class="line">    <span class="comment"># udp: true</span></span><br><span class="line">    </span><br><span class="line"><span class="attr">rules:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">IP-CIDR,你的IP/32,DIRECT</span> <span class="string">（根据自身规则情况）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
