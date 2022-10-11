@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"engrzhou.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近有三地组网需求，使相互能内网访问。此方案还可以通过OpenVPN来实现，本文只记录一下本次使用的Zerotier方案。 关于Zerotier方案的优缺点，阅读本文的同学自行搜索一下，此处不做赘述了。 本方案以Openwrt 18.06-RC2为例子做说明，其他版本理论类似，有需求的同学自己实验即可。 至于怎么注册zerotier账户，此处也不做说明。 Zerotier地址：https:&#x2F;&#x2F;my">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Openwrt路由通过Zerotier组网实现异地内网互访">
+<meta property="og:url" content="https://engrzhou.github.io/2018/07/Openwrt%E8%B7%AF%E7%94%B1%E9%80%9A%E8%BF%87Zerotier%E7%BB%84%E7%BD%91%E5%AE%9E%E7%8E%B0%E5%BC%82%E5%9C%B0%E5%86%85%E7%BD%91%E4%BA%92%E8%AE%BF/index.html">
+<meta property="og:site_name" content="EngrZhou&#39;s Blog">
+<meta property="og:description" content="最近有三地组网需求，使相互能内网访问。此方案还可以通过OpenVPN来实现，本文只记录一下本次使用的Zerotier方案。 关于Zerotier方案的优缺点，阅读本文的同学自行搜索一下，此处不做赘述了。 本方案以Openwrt 18.06-RC2为例子做说明，其他版本理论类似，有需求的同学自己实验即可。 至于怎么注册zerotier账户，此处也不做说明。 Zerotier地址：https:&#x2F;&#x2F;my">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723161213.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723163333.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723163435.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723163459.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723164230.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723164252.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723164451.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723164453.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723164724.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723165054.png">
+<meta property="og:image" content="https://engrzhou.github.io/assets/20180723165150.png">
+<meta property="article:published_time" content="2018-07-23T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-11T03:36:00.958Z">
+<meta property="article:author" content="EngrZhou">
+<meta property="article:tag" content="Openwrt">
+<meta property="article:tag" content="Zerotier">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://engrzhou.github.io/assets/20180723161213.png">
+
+<link rel="canonical" href="https://engrzhou.github.io/2018/07/Openwrt%E8%B7%AF%E7%94%B1%E9%80%9A%E8%BF%87Zerotier%E7%BB%84%E7%BD%91%E5%AE%9E%E7%8E%B0%E5%BC%82%E5%9C%B0%E5%86%85%E7%BD%91%E4%BA%92%E8%AE%BF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Openwrt路由通过Zerotier组网实现异地内网互访 | EngrZhou's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">EngrZhou's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://engrzhou.github.io/2018/07/Openwrt%E8%B7%AF%E7%94%B1%E9%80%9A%E8%BF%87Zerotier%E7%BB%84%E7%BD%91%E5%AE%9E%E7%8E%B0%E5%BC%82%E5%9C%B0%E5%86%85%E7%BD%91%E4%BA%92%E8%AE%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="EngrZhou">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EngrZhou's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Openwrt路由通过Zerotier组网实现异地内网互访
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-23 12:00:00" itemprop="dateCreated datePublished" datetime="2018-07-23T12:00:00+08:00">2018-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-11 11:36:00" itemprop="dateModified" datetime="2022-10-11T11:36:00+08:00">2022-10-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近有三地组网需求，使相互能内网访问。此方案还可以通过OpenVPN来实现，本文只记录一下本次使用的Zerotier方案。</p>
+<p>关于Zerotier方案的优缺点，阅读本文的同学自行搜索一下，此处不做赘述了。</p>
+<p>本方案以Openwrt 18.06-RC2为例子做说明，其他版本理论类似，有需求的同学自己实验即可。</p>
+<p>至于怎么注册zerotier账户，此处也不做说明。</p>
+<p>Zerotier地址：<a target="_blank" rel="noopener" href="https://my.zerotier.com/">https://my.zerotier.com/</a></p>
+<h4 id="Openwrt-安装Zerotier"><a href="#Openwrt-安装Zerotier" class="headerlink" title="Openwrt 安装Zerotier"></a>Openwrt 安装Zerotier</h4><p>安装Zerotier的方式有两种，本质是一样的，Luci 或者命令行安装。</p>
+<ul>
+<li><p>命令行安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install zerotier</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Luci 下图形界面安装</p>
+<p><img src="/assets/20180723161213.png" alt="20180723161213"></p>
+</li>
+</ul>
+<h4 id="初始化Zerotier"><a href="#初始化Zerotier" class="headerlink" title="初始化Zerotier"></a>初始化Zerotier</h4><ul>
+<li><p>编辑配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Beijing:~#  vi /etc/config/zerotier</span><br></pre></td></tr></table></figure>
+
+<p>第一次打开文件看到的默认配置是下面这个，默认9993端口，如有冲突或者其他需要请自行修改。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">config</span> <span class="string">zerotier</span> <span class="string">sample_config</span></span><br><span class="line">        <span class="string">option</span> <span class="string">enabled</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># persistent configuration folder (for ZT controller mode)</span></span><br><span class="line">        <span class="comment">#option config_path &#x27;/etc/zerotier&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#option port &#x27;9993&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Generate secret on first start</span></span><br><span class="line">        <span class="string">option</span> <span class="string">secret</span> <span class="string">&#x27;generate&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Join a public network called Earth</span></span><br><span class="line">        <span class="string">list</span> <span class="string">join</span> <span class="string">&#x27;8056c2e21c000001&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们需要修改的共有两处：</p>
+<ol>
+<li><strong>option enabled 0</strong>改为<strong>option enabled 1</strong></li>
+<li><strong>list join ‘你的网络id’</strong>，其他的可以默认保持不变；</li>
+</ol>
+</li>
+<li><p>启动zerotier</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@Beijing:~# /etc/init.d/zerotier start</span><br><span class="line">Generate secret - please wait...</span><br><span class="line">root@Beijing:~#</span><br></pre></td></tr></table></figure>
+
+<p>这个时候会生成一个密钥，zerotier服务器端会根据密钥来判定用户id。</p>
+<p>如果执行以上命令失败，则尝试执行一下以下命令：</p>
+<p>失败信息有可能是[<em>zerotier-one: missing port and zerotier-one.port not found in &#x2F;var&#x2F;lib&#x2F;zerotier-one</em>]</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Beijing:~# zerotier-one -d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@Beijing:~# zerotier-cli listnetworks</span><br><span class="line">200 listnetworks &lt;nwid&gt; &lt;name&gt; &lt;mac&gt; &lt;status&gt; &lt;type&gt; &lt;dev&gt; &lt;ZT assigned ips&gt;</span><br><span class="line">200 listnetworks 8056c2e21c000001  da:b4:ee:00:00:00 ACCESS_DENIED PRIVATE zt2lrwm2qj -</span><br></pre></td></tr></table></figure>
+
+<p>从命令返回状态可以看出，已经成功连接zerotier服务器，但还未获得授权（ACCESS_DENIED）。</p>
+<p>不着急授权，先进行本地网络配置。</p>
+</li>
+</ul>
+<h4 id="接口添加"><a href="#接口添加" class="headerlink" title="接口添加"></a>接口添加</h4><p>单独添加一个新的接口是为了更清晰方便，如果想利用LAN接口桥接也是可行的，本文不做说明了，有这个技能的人，也不需要看此文章了:)</p>
+<ul>
+<li><p>添加本地接口</p>
+<p><img src="/assets/20180723163333.png" alt="20180723163333"></p>
+</li>
+<li><ul>
+<li>接口信息</li>
+</ul>
+<p><img src="/assets/20180723163435.png" alt="20180723163435"></p>
+</li>
+<li><p>创建并分配新的防火墙区域<br><img src="/assets/20180723163459.png" alt="20180723163459"></p>
+</li>
+</ul>
+<h4 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h4><ul>
+<li>进入防火墙基本设置<br><img src="/assets/20180723164230.png" alt="20180723164230"></li>
+<li>编辑基本规则<br><img src="/assets/20180723164252.png" alt="20180723164252"></li>
+<li>修改zerotier转发规则<br><img src="/assets/20180723164451.png" alt="20180723164451"></li>
+</ul>
+<p>最终修改结果</p>
+<p><img src="/assets/20180723164453.png" alt="20180723164453"></p>
+<ul>
+<li><p>修改IPTABLES<br><img src="/assets/20180723164724.png" alt="20180723164724"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -I FORWARD -i zt2lrwm2qj -j ACCEPT</span><br><span class="line">iptables -I FORWARD -o zt2lrwm2qj -j ACCEPT</span><br><span class="line">iptables -t nat -I POSTROUTING -o zt2lrwm2qj -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p>其中 zt2lrwm2qj 为接口名称</p>
+</li>
+</ul>
+<h4 id="Zerotier网页配置"><a href="#Zerotier网页配置" class="headerlink" title="Zerotier网页配置"></a>Zerotier网页配置</h4><ul>
+<li>登录<a target="_blank" rel="noopener" href="https://my.zerotier.com/network">https://my.zerotier.com/network</a><br>授权设备，勾选前面auth选项，进行设备允许授权<br><img src="/assets/20180723165054.png" alt="20180723165054"></li>
+<li>设置路由<br><img src="/assets/20180723165150.png" alt="20180723165150"></li>
+</ul>
+<p>10.0.0.0&#x2F;24为刚才配置的路由信息，一般家庭用户大部分默认的是192.168.1.1&#x2F;24，建议进行一次修改，组网过程中，内网的网段不允许相同，10.10.10.110为自动分配或者手动分配给该设备的IP地址。</p>
+<ul>
+<li><p>查询路由状态</p>
+<p>进入路由，重新输入命令查询状态。可以看到已经成功获取到刚刚分配的10.10.10.110的IP地址。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@Beijing:~# zerotier-cli listnetworks</span><br><span class="line">200 listnetworks &lt;nwid&gt; &lt;name&gt; &lt;mac&gt; &lt;status&gt; &lt;type&gt; &lt;dev&gt; &lt;ZT assigned ips&gt;</span><br><span class="line">200 listnetworks 8056c2e21c000001  da:b4:ee:00:00:00 OK PRIVATE zt2lrwm2qj 10.10.10.110/24</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>至此，第一台路由已经入网成功，依次设置第二个、第三个你所需要加入网络的路由。重复以上步骤，则可成功组网。</p>
+<p>完全完成之后</p>
+<p>ping 第二台路由的网关，可以看到已经成功连接：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@Beijing:~# ping 10.0.1.1</span><br><span class="line">PING 10.0.1.1 (10.0.1.1): 56 data bytes</span><br><span class="line">64 bytes from 10.0.1.1: seq=0 ttl=64 time=36.784 ms</span><br><span class="line">64 bytes from 10.0.1.1: seq=1 ttl=64 time=17.829 ms</span><br><span class="line">64 bytes from 10.0.1.1: seq=2 ttl=64 time=17.901 ms</span><br><span class="line">64 bytes from 10.0.1.1: seq=3 ttl=64 time=18.004 ms</span><br><span class="line">64 bytes from 10.0.1.1: seq=4 ttl=64 time=19.042 ms</span><br></pre></td></tr></table></figure>
+
+<p>本文是完成之后的回忆记录，尽可能的还原当时的状态，难免有不尽之处，还请谅解。<br>希望此文能帮助初入Openwrt+Zerotier的你。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Openwrt/" rel="tag"># Openwrt</a>
+              <a href="/tags/Zerotier/" rel="tag"># Zerotier</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/06/do-while%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" rel="prev" title="do{...}while(false)的使用场景">
+      <i class="fa fa-chevron-left"></i> do{...}while(false)的使用场景
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/09/%E5%BA%94%E7%94%A8%E6%9D%83%E9%99%90Activity%E9%9A%90%E8%97%8FSYSTEM_ALERT_WINDOW%20%E7%9A%84%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/" rel="next" title="应用权限Activity隐藏SYSTEM_ALERT_WINDOW 的窗口问题分析">
+      应用权限Activity隐藏SYSTEM_ALERT_WINDOW 的窗口问题分析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Openwrt-%E5%AE%89%E8%A3%85Zerotier"><span class="nav-number">1.</span> <span class="nav-text">Openwrt 安装Zerotier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96Zerotier"><span class="nav-number">2.</span> <span class="nav-text">初始化Zerotier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E6%B7%BB%E5%8A%A0"><span class="nav-number">3.</span> <span class="nav-text">接口添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">4.</span> <span class="nav-text">配置防火墙</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Zerotier%E7%BD%91%E9%A1%B5%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Zerotier网页配置</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">EngrZhou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EngrZhou</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
